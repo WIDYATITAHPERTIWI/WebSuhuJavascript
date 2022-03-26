@@ -1,0 +1,88 @@
+<html>
+  <head>
+  		<title>Konversi Suhu</title>
+  			<link rel="stylesheet" type="text/css" href="styled-select.css" href="sweetalert2.min.css">
+
+</head>
+<body bgcolor="#F0E68C">
+	<h1 align="center">Kalkulator Konversi Suhu By Widya Titah Pertiwi</h1>
+
+	<h2 align="center">Masukkan Pilihan Suhu Yang Ingin Anda Konversi :</h2>
+	<div class="styled-select">
+		<h2 align="center"><select id="Konversi"></h2>
+			<optgroup label="Kelompok Celcius"></optgroup>
+				<option value="CF">Celcius => Fahrenheit</option><br />
+				<option value="CR">Celcius => Reamur</option><br />
+				<option value="CK">Celcius => Kelvin</option><br />
+			<optgroup label="Kelompok Fahrenheit"></optgroup>
+				<option value="FC">Fahrenheit => Celcius</option><br />
+				<option value="FR">Fahrenheit => Reamur</option><br />
+				<option value="FK">Fahrenheit => Kelvin</option><br />
+			<optgroup label="Kelompok Reamur"></optgroup>
+				<option value="RC">Reamur => Celcius</option><br />
+				<option value="RF">Reamur => Fahrenheit</option><br />
+				<option value="RK">Reamur => Kelvin</option><br />
+			<optgroup label="Kelompok Kelvin"></optgroup>
+				<option value="KC">Kelvin => Celcius</option><br />
+				<option value="KF">Kelvin => Fahrenheit</option><br />
+				<option value="KR">Kelvin => Reamur</option><br />
+		</select><br />
+	</div>
+	<h2 align="center">Masukkan Nilai Suhu Yang Ingin Di Konversi :</h2>
+	<center><input type="text" id="bil1" placeholder="Masukkan Angka"><br /></center>
+	<center><button onclick="Suhu ()">Click Here!</button></center>
+</body>
+</html>
+<script src="sweet/sweetalert2.all.min.js"></script>  	
+<script>
+	function Suhu () {
+		var bil1 = document.getElementById('bil1').value;
+		var Konversi = document.getElementById('Konversi').value;
+		var hasil;
+
+		if (Konversi == "CF") {
+			hasil = ((9 / 5) * parseInt(bil1)) + 32;
+		}else if (Konversi == "CR") {
+			hasil = (4 / 5) * parseInt(bil1);
+		}else if (Konversi == "CK") {
+			hasil = parseInt(bil1) * 273.15;
+		}else if (Konversi == "FC") {
+			hasil = (parseInt(bil1) - 32) / (9 / 5);
+		}else if (Konversi == "FR") {
+			hasil = (parseInt(bil1) -32) / (9 / 4);
+		}else if (Konversi == "FK") {
+			hasil = (parseInt(bil1) + 459.67) / (9 / 5);
+		}else if (Konversi == "RC") {
+			hasil =(parseInt(bil1)) / (4 / 5);
+		}else if (Konversi == "RF") {
+			hasil =((9 / 4) * parseInt(bil1)) + 32;
+		}else if (Konversi == "RK") {
+			hasil = (parseInt(bil1) / (4 / 5)) + 273.15;
+		}else if (Konversi == "KC") {
+			hasil = parseInt(bil1) - 273.15;
+		}else if (Konversi == "KF") {
+			hasil = (parseInt(bil1) * (9 / 5)) - 459.67;
+		}else if (Konversi == "KR") {
+			hasil = (parseInt(bil1) - 273.15) * (9 / 5);
+		}else {
+			hasil = "Tidak Ada";
+		}
+		Swal.fire({
+			title: 'Apakah Anda Yakin?',
+			text: "Pilihlah Salah Satu Tombol Di Bawah Ini!",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#DAA520',
+			cancelButtonColor: '#808000',
+			confirmButtonText: 'Yes!'
+		}).then((result) => {
+			if (result.value) {
+				Swal.fire(
+					'Jawaban',
+					'Hasil Dari Konversi Adalah :' + hasil,
+					'success'
+				)
+			}
+		})
+	}
+</script>	
